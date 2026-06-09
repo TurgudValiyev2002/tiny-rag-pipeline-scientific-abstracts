@@ -1,0 +1,4 @@
+query,top_topic,score,retrieved_abstract,simple_answer
+How does federated learning protect data?,federated learning,0.5,Federated learning trains models across clients while keeping raw data local and sharing model updates.,Federated learning trains models across clients while keeping raw data local and sharing model updates.
+What does RAG do before generation?,retrieval augmented generation,0.603,Retrieval augmented generation first retrieves relevant documents and then conditions generation on that evidence.,Retrieval augmented generation first retrieves relevant documents and then conditions generation on that evidence.
+Why run AI on edge devices?,edge ai,0.4143,"Edge AI runs inference near sensors to reduce latency, bandwidth use, and privacy exposure.","Edge AI runs inference near sensors to reduce latency, bandwidth use, and privacy exposure."

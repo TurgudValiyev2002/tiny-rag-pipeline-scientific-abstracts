@@ -1,0 +1,6 @@
+topic,abstract
+federated learning,Federated learning trains models across clients while keeping raw data local and sharing model updates.
+vision transformer,Vision transformers split images into patches and use self-attention instead of convolution as the main mixing operation.
+retrieval augmented generation,Retrieval augmented generation first retrieves relevant documents and then conditions generation on that evidence.
+edge ai,"Edge AI runs inference near sensors to reduce latency, bandwidth use, and privacy exposure."
+graph neural network,Graph neural networks learn from nodes and edges by passing messages between neighboring nodes.

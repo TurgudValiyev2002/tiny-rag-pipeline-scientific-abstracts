@@ -1,44 +1,52 @@
 # Tiny RAG Pipeline for Scientific Abstracts
 
-## 1. Motivation
+## Motivation
 
-This lab builds a very small retrieval augmented generation pipeline. The motivation is to understand RAG as a system: store documents, retrieve evidence, then answer using retrieved context.
+Retrieval augmented generation works only if retrieval finds useful evidence. This project builds a small RAG-style pipeline to make the retrieval step visible and measurable.
 
-## 2. Project Goal
+## Project Goal
 
-Build a small, reproducible AI research lab with clear outputs and honest limitations.
+We built a tiny scientific-abstract search system. Given a question, the system retrieves the most relevant abstract and returns an evidence-based answer.
 
-## 3. Dataset, Paper, Or Problem Description
+## Dataset
 
-Dataset: five local AI abstract snippets written for offline use.
+The corpus contains five short AI-related abstract snippets about federated learning, vision transformers, RAG, Edge AI, and graph neural networks.
 
-## 4. Tools
+## Tools
 
-Tools: Python, pandas, scikit-learn TF-IDF, matplotlib.
+Python, pandas, scikit-learn, and matplotlib.
 
-## 5. Models Or Methods
+## Method
 
-Method: TF-IDF vectors and cosine similarity retrieval; the answer is an evidence-grounded extractive sentence.
+We converted abstracts and queries into TF-IDF vectors, computed cosine similarity, selected the top matching abstract, and used that abstract as the simple answer.
 
-## 6. Hyperparameters When Relevant
+## Hyperparameters
 
-Hyperparameters: English stop words, top-1 retrieval.
+- Vectorizer: `TfidfVectorizer(stop_words="english")`
+- Retrieval: top-1 cosine similarity
+- Number of queries: 3
 
-## 7. Results
+## Results
 
-Results include corpus, retrieval table, and score figure.
+| Query | Retrieved Topic | Score |
+|---|---|---:|
+| How does federated learning protect data? | federated learning | 0.5000 |
+| What does RAG do before generation? | retrieval augmented generation | 0.6030 |
+| Why run AI on edge devices? | edge ai | 0.4143 |
 
-## 8. Interpretation Of Results
+Result files include the corpus, retrieval table, and retrieval-score figure.
 
-Interpretation: RAG quality depends first on retrieval quality.
+## Interpretation
 
-## 9. Conclusion
+The retriever selected the expected topic for all three queries. The scores are not very high because the corpus is tiny and the wording is short. This is normal for a minimal TF-IDF setup.
 
-Conclusion: before building agents around RAG, verify whether the retriever finds the right evidence.
+## Conclusion
 
-## 10. How To Run
+This project shows the basic RAG workflow: build a corpus, retrieve evidence, and answer from the retrieved text. A stronger version should add top-k retrieval, larger documents, and faithfulness evaluation.
+
+## How To Run
 
 ```bash
 pip install -r requirements.txt
-python 1_*.py
+python 1_tiny_rag_pipeline.py
 ```

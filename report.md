@@ -1,33 +1,29 @@
-# One-Page Report: Tiny RAG Pipeline for Scientific Abstracts
+# Report: Tiny RAG Pipeline for Scientific Abstracts
 
 ## Motivation
 
-This lab is part of Dear Turgud's June 2026 AI Research Lab. It focuses on a small but meaningful research workflow.
+We built a small RAG pipeline to understand retrieval before adding generation.
 
-## Tools
+## Dataset
 
-Tools: Python, pandas, scikit-learn TF-IDF, matplotlib.
+The corpus contains five short AI abstract snippets and three test questions.
 
-## Dataset, Paper, Or Problem
+## Method
 
-Dataset: five local AI abstract snippets written for offline use.
-
-## Model(s) Or Method(s)
-
-Method: TF-IDF vectors and cosine similarity retrieval; the answer is an evidence-grounded extractive sentence.
+We used TF-IDF vectors and cosine similarity to retrieve the most relevant abstract for each query.
 
 ## Hyperparameters
 
-Hyperparameters: English stop words, top-1 retrieval.
+The vectorizer used English stop-word removal. Retrieval used top-1 cosine similarity.
 
 ## Results
 
-Results include corpus, retrieval table, and score figure.
+The system retrieved the expected topics for all three queries. Similarity scores were 0.5000, 0.6030, and 0.4143.
 
 ## Interpretation
 
-Interpretation: RAG quality depends first on retrieval quality.
+Retrieval worked correctly in this small setting, but the modest scores show that larger corpora and better embeddings would be needed for a serious RAG system.
 
 ## Conclusion
 
-Conclusion: before building agents around RAG, verify whether the retriever finds the right evidence.
+The project demonstrates the core RAG idea clearly. The next step is top-k retrieval and faithfulness checking.

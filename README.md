@@ -1,5 +1,10 @@
 # Tiny RAG Pipeline for Scientific Abstracts
 
+![Project overview](assets/readme_project_overview.png)
+
+Figure: retrieval-augmented answering pipeline used in this project.
+
+
 ## Motivation
 
 Retrieval augmented generation works only if retrieval finds useful evidence. This project builds a small RAG-style pipeline to make the retrieval step visible and measurable.

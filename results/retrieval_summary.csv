@@ -1,8 +1,10 @@
 metric,value
-queries,30.0
-documents,30.0
-hit_at_1,0.9333333333333333
-hit_at_3,0.9666666666666667
-hit_at_5,0.9666666666666667
-mean_reciprocal_rank,0.9520833333333333
-mean_gold_rank,1.5333333333333334
+queries,100.0
+documents,100.0
+topic_groups,20.0
+hit_at_1,0.87
+hit_at_3,0.97
+hit_at_5,0.98
+hit_at_10,0.99
+mean_reciprocal_rank,0.9188833333333334
+mean_gold_rank,1.97

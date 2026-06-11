@@ -1,22 +1,22 @@
-# Tiny RAG Pipeline for Scientific Abstracts
+# 100-Document RAG Retrieval Evaluation
 
 ![Project overview](assets/readme_project_overview.png)
 
-Figure: a small retrieval benchmark with 30 abstracts, 30 labeled queries, TF-IDF ranking, and hit@k evaluation.
+Figure: a RAG-style retrieval benchmark with 100 abstracts, 100 labeled queries, TF-IDF ranking, and hit@k evaluation.
 
 ## Motivation
 
-Retrieval augmented generation depends on retrieval quality. If the retriever gives the wrong document, the generated answer may be unsupported even if the language model sounds confident. For that reason, a RAG project should report retrieval metrics, not only example outputs.
+Retrieval augmented generation depends on retrieval quality. If the retriever gives the wrong document, the final answer may be unsupported even if the language model sounds confident. For that reason, a RAG project should report retrieval metrics, not only example outputs.
 
 ## Project Goal
 
-We built a small RAG-style retrieval pipeline and evaluated whether the correct document appears in the top retrieved results.
+We built a RAG-style retrieval pipeline and evaluated whether the correct document appears in the top retrieved results.
 
 ## Dataset
 
-The corpus contains 30 short AI research abstracts covering federated learning, edge AI, quantization, pruning, computer vision, RAG, tool agents, graph learning, and evaluation methods.
+The corpus contains 100 short AI research abstracts across 20 topic groups. The topics include federated learning, edge AI, model compression, computer vision, object detection, RAG, LLM evaluation, agentic AI, graph learning, responsible AI, deployment, security, optimization, reinforcement learning, and multimodal AI.
 
-The query set contains 30 labeled questions. Each query has one gold document ID.
+The query set contains 100 labeled questions. Each query has one gold document ID.
 
 ## Tools
 
@@ -37,17 +37,21 @@ We used TF-IDF with unigram and bigram features. For each query, we ranked all d
 
 | Metric | Value |
 |---|---:|
-| Documents | 30 |
-| Queries | 30 |
-| Hit@1 | 0.9333 |
-| Hit@3 | 0.9667 |
-| Hit@5 | 0.9667 |
-| Mean reciprocal rank | 0.9521 |
-| Mean gold rank | 1.5333 |
+| Documents | 100 |
+| Queries | 100 |
+| Topic groups | 20 |
+| Hit@1 | 0.8700 |
+| Hit@3 | 0.9700 |
+| Hit@5 | 0.9800 |
+| Hit@10 | 0.9900 |
+| Mean reciprocal rank | 0.9189 |
+| Mean gold rank | 1.9700 |
 
 ![Retrieval metrics](results/retrieval_metrics.png)
 
 ![Gold rank distribution](results/gold_rank_distribution.png)
+
+![Hit@1 by topic group](results/topic_group_hit_at_1.png)
 
 Result files:
 
@@ -56,16 +60,17 @@ Result files:
 - `results/rag_retrieval_results.csv`
 - `results/retrieval_metrics_by_query.csv`
 - `results/retrieval_summary.csv`
+- `results/retrieval_summary_by_topic_group.csv`
 
 ## Interpretation
 
-The retriever works well on this controlled scientific mini-corpus. Hit@1 is high, meaning most queries retrieve the correct document first. Hit@3 improves slightly, showing that top-k retrieval helps when the first document is not perfect.
+The retriever works well but is not perfect. Hit@1 is 0.8700, so most queries retrieve the correct document first. Hit@3 rises to 0.9700, which shows why RAG systems usually pass several retrieved documents to the answer generator instead of trusting only the top document.
 
-The result is not a claim that TF-IDF is enough for real RAG. The dataset is still small and carefully written. A larger corpus with overlapping topics would be harder and would likely require dense retrieval or reranking.
+The remaining misses are useful. They happen when nearby AI topics share vocabulary, for example compression, deployment, evaluation, and security. This is exactly where dense retrieval, reranking, or better query expansion may help.
 
 ## Conclusion
 
-The project now evaluates retrieval quality directly. The next step is to add more documents with similar wording and compare TF-IDF with embedding retrieval and reranking.
+This project evaluates retrieval quality directly on a 100-document AI corpus. TF-IDF is a strong baseline for short technical abstracts, but the non-perfect Hit@1 result shows that a serious RAG system should track retrieval metrics and compare lexical retrieval against embedding retrieval and reranking.
 
 ## How To Run
 

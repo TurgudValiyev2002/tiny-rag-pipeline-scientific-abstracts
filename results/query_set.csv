@@ -1,31 +1,101 @@
-query,gold_doc_id
-How does federated averaging combine client models?,fedavg
-Which federated method helps with non-IID clients?,fedprox
-How can a server aggregate updates without seeing each client update?,secure_aggregation
-What privacy method adds noise to client gradients?,differential_privacy_fl
-Why deploy inference near sensors?,edge_ai_latency
-What is machine learning on microcontrollers called?,tinyml
-How do we store model weights with fewer bits?,model_quantization
-What compression method removes small neural network weights?,weight_pruning
-Which vision model uses image patches and self-attention?,vision_transformer
-Which transformer uses shifted windows for images?,swin_transformer
-What model family learns local visual filters?,cnn_edges
-Which task predicts bounding boxes and labels?,object_detection
-Which detector is known for single-pass real-time detection?,yolo
-Which detector uses region proposals?,faster_rcnn
-What does RAG retrieve before answering?,rag
-What retrieval method compares embedding vectors?,dense_retrieval
-Which sparse retriever uses term frequency and IDF?,bm25
-What step reorders initially retrieved documents?,reranking
-What is a fluent but unsupported LLM answer called?,hallucination
-What studies the effect of instructions and examples on LLM behavior?,prompt_engineering
-What kind of agent calls calculators or search tools?,agent_tool_use
-Which graph measure finds important nodes?,graph_centrality
-What graph task finds densely connected groups?,community_detection
-Which graph neural network aggregates neighbors?,gcn
-What task predicts labels for graph nodes?,node_classification
-What checks whether probabilities match correctness frequency?,calibration
-What evaluation repeats training across several splits?,cross_validation
-What stops training when validation stops improving?,early_stopping
-What table shows classifier confusions between classes?,confusion_matrix
-Which F1 treats each class equally?,macro_f1
+query,gold_doc_id,topic_group
+How does FedAvg combine client models?,fedavg,federated_learning
+Which federated method adds a proximal term for non-IID clients?,fedprox,federated_learning
+How can a server aggregate updates without seeing each client update?,secure_aggregation,federated_learning
+What privacy method adds noise to federated client updates?,federated_dp,federated_learning
+What problem occurs when non-IID client updates move in different directions?,client_drift,federated_learning
+Why run inference near sensors?,edge_latency,edge_ai
+What is machine learning on microcontrollers called?,tinyml,edge_ai
+What methods reduce neural network model size?,model_compression,edge_ai
+How can edge inference help privacy?,edge_privacy,edge_ai
+What constraints matter for embedded AI deployment?,hardware_constraints,edge_ai
+What stores model values with 8-bit integers?,int8_quantization,compression
+Why can very low-bit quantization hurt accuracy?,low_bit_quantization,compression
+What compression method removes low-importance weights?,weight_pruning,compression
+Which pruning type removes channels or filters?,structured_pruning,compression
+What compression method trains a student from a teacher model?,knowledge_distillation,compression
+What model family learns local image filters?,cnn_filters,computer_vision
+Which vision model uses image patches and self-attention?,vision_transformer,computer_vision
+Which transformer uses shifted windows for images?,swin_transformer,computer_vision
+What technique applies crops and flips during image training?,image_augmentation,computer_vision
+Which task predicts a class for every pixel?,semantic_segmentation,computer_vision
+Which task predicts object labels and bounding boxes?,object_detection,object_detection
+Which detector is known for single-pass real-time detection?,yolo_detector,object_detection
+Which detector uses region proposals?,faster_rcnn,object_detection
+What predefined shapes help detectors predict object boxes?,anchor_boxes,object_detection
+Which metric summarizes detection precision and recall across IoU thresholds?,mean_average_precision,object_detection
+What does RAG retrieve before answering?,rag_pipeline,rag
+What retrieval method compares embedding vectors?,dense_retrieval,rag
+Which sparse retriever uses term frequency and IDF?,bm25_retrieval,rag
+What step reorders initially retrieved documents?,reranking,rag
+Which retrieval metric checks if the gold document is in the top k?,retrieval_hit_at_k,rag
+What is a fluent but unsupported LLM answer called?,hallucination,llm_evaluation
+What studies the effect of instructions and examples on LLM behavior?,prompt_engineering,llm_evaluation
+What checks whether model confidence matches correctness?,calibration,llm_evaluation
+What evaluation checks harmful or abusive model outputs?,toxicity_eval,llm_evaluation
+What evaluation method uses a model to grade outputs with a rubric?,llm_judge,llm_evaluation
+What kind of agent calls calculators or search tools?,tool_use_agent,agentic_ai
+What agent decomposes a goal into steps?,planning_agent,agentic_ai
+What loop lets an agent critique and revise its output?,reflection_loop,agentic_ai
+What component stores prior context for an agent?,memory_agent,agentic_ai
+What chooses the correct external tool for a task?,tool_routing,agentic_ai
+Which centrality counts direct node connections?,degree_centrality,graph_learning
+Which centrality uses shortest paths through a node?,betweenness_centrality,graph_learning
+What graph task finds densely connected groups?,community_detection,graph_learning
+Which graph method aggregates neighboring node features?,graph_convolution,graph_learning
+What task predicts labels for graph nodes?,node_classification,graph_learning
+What evaluation repeats training across several splits?,cross_validation,ml_evaluation
+What table shows classifier confusions between classes?,confusion_matrix,ml_evaluation
+Which F1 score treats every class equally?,macro_f1,ml_evaluation
+Which metric measures ranking quality across thresholds?,roc_auc,ml_evaluation
+What stops training when validation performance stops improving?,early_stopping,ml_evaluation
+Which fairness metric compares positive prediction rates between groups?,fairness_selection_rate,responsible_ai
+Which fairness concept compares true positive rates across groups?,equal_opportunity,responsible_ai
+What attack tries to infer private information from model behavior?,privacy_attack,responsible_ai
+"What document describes model use, limitations, and evaluation?",model_card,responsible_ai
+What document describes dataset collection and risks?,data_datasheet,responsible_ai
+What regularization randomly disables neurons during training?,dropout_regularization,training_methods
+What regularization penalizes large weights?,weight_decay,training_methods
+What layer normalizes activations during training?,batch_normalization,training_methods
+What changes optimizer step size over training?,learning_rate_schedule,training_methods
+Which optimizer uses momentum and adaptive learning rates?,adam_optimizer,training_methods
+Which dataset contains handwritten digit images?,mnist_dataset,datasets
+Which dataset contains grayscale clothing images?,fashionmnist_dataset,datasets
+Which dataset has ten classes of small color images?,cifar10_dataset,datasets
+"Which dataset provides object boxes, masks, and captions?",coco_dataset,datasets
+Which dataset is a citation network with paper topic labels?,cora_dataset,datasets
+What format helps export models for interoperable deployment?,onnx_export,deployment
+What benchmark measures inference time?,latency_benchmark,deployment
+What measures processed inputs per unit time?,throughput,deployment
+What monitoring checks production inputs against training data?,monitoring_drift,deployment
+What deployment plan restores a previous model after problems?,rollback_strategy,deployment
+What task predicts future time-series values?,forecasting,time_series
+What is a repeated temporal pattern in a time series?,seasonality,time_series
+What task finds unusual observations?,anomaly_detection,time_series
+What evaluation trains on past windows and tests later periods?,rolling_window,time_series
+What problem happens when future information enters training features?,temporal_leakage,time_series
+What splits text into words or subwords?,tokenization,nlp
+"What task extracts people, organizations, and locations?",named_entity_recognition,nlp
+What task assigns labels to text documents?,text_classification,nlp
+What task creates a shorter version of a document?,summarization,nlp
+What task converts text between languages?,machine_translation,nlp
+What inputs are modified to fool a model?,adversarial_examples,security
+What attack corrupts training data?,data_poisoning,security
+What attack tries to copy a model through queries?,model_extraction,security
+What attack tries to override an LLM application's instructions?,prompt_injection,security
+What attack predicts whether an example was in training data?,membership_inference,security
+What optimization method updates parameters to reduce loss?,gradient_descent,optimization
+What optimization technique accumulates past gradients?,momentum,optimization
+What controls optimizer step size?,learning_rate,optimization
+What describes objective values across parameter space?,loss_landscape,optimization
+What process tests settings like learning rate and depth?,hyperparameter_search,optimization
+Which reinforcement learning method learns action values from rewards?,q_learning,reinforcement_learning
+Which methods directly optimize a parameterized policy?,policy_gradient,reinforcement_learning
+What signal guides a reinforcement learning agent?,reward_function,reinforcement_learning
+What tradeoff balances trying new actions and using known good actions?,exploration_exploitation,reinforcement_learning
+What reinforcement learning setting trains from fixed logged data?,offline_rl,reinforcement_learning
+What model type connects images and text?,vision_language_model,multimodal_ai
+What task generates text descriptions of images?,image_captioning,multimodal_ai
+What learning approach aligns image and text embeddings?,clip_contrastive,multimodal_ai
+What representation places different data types in a shared space?,multimodal_embedding,multimodal_ai
+What task answers questions about an image?,visual_question_answering,multimodal_ai

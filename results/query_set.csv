@@ -1,0 +1,31 @@
+query,gold_doc_id
+How does federated averaging combine client models?,fedavg
+Which federated method helps with non-IID clients?,fedprox
+How can a server aggregate updates without seeing each client update?,secure_aggregation
+What privacy method adds noise to client gradients?,differential_privacy_fl
+Why deploy inference near sensors?,edge_ai_latency
+What is machine learning on microcontrollers called?,tinyml
+How do we store model weights with fewer bits?,model_quantization
+What compression method removes small neural network weights?,weight_pruning
+Which vision model uses image patches and self-attention?,vision_transformer
+Which transformer uses shifted windows for images?,swin_transformer
+What model family learns local visual filters?,cnn_edges
+Which task predicts bounding boxes and labels?,object_detection
+Which detector is known for single-pass real-time detection?,yolo
+Which detector uses region proposals?,faster_rcnn
+What does RAG retrieve before answering?,rag
+What retrieval method compares embedding vectors?,dense_retrieval
+Which sparse retriever uses term frequency and IDF?,bm25
+What step reorders initially retrieved documents?,reranking
+What is a fluent but unsupported LLM answer called?,hallucination
+What studies the effect of instructions and examples on LLM behavior?,prompt_engineering
+What kind of agent calls calculators or search tools?,agent_tool_use
+Which graph measure finds important nodes?,graph_centrality
+What graph task finds densely connected groups?,community_detection
+Which graph neural network aggregates neighbors?,gcn
+What task predicts labels for graph nodes?,node_classification
+What checks whether probabilities match correctness frequency?,calibration
+What evaluation repeats training across several splits?,cross_validation
+What stops training when validation stops improving?,early_stopping
+What table shows classifier confusions between classes?,confusion_matrix
+Which F1 treats each class equally?,macro_f1

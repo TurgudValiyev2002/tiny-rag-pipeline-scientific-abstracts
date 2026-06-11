@@ -1,0 +1,31 @@
+query,gold_doc_id,rank,hit_at_1,hit_at_3,hit_at_5,reciprocal_rank
+How does federated averaging combine client models?,fedavg,1,1,1,1,1.0
+Which federated method helps with non-IID clients?,fedprox,1,1,1,1,1.0
+How can a server aggregate updates without seeing each client update?,secure_aggregation,1,1,1,1,1.0
+What privacy method adds noise to client gradients?,differential_privacy_fl,1,1,1,1,1.0
+Why deploy inference near sensors?,edge_ai_latency,1,1,1,1,1.0
+What is machine learning on microcontrollers called?,tinyml,1,1,1,1,1.0
+How do we store model weights with fewer bits?,model_quantization,1,1,1,1,1.0
+What compression method removes small neural network weights?,weight_pruning,2,0,1,1,0.5
+Which vision model uses image patches and self-attention?,vision_transformer,1,1,1,1,1.0
+Which transformer uses shifted windows for images?,swin_transformer,1,1,1,1,1.0
+What model family learns local visual filters?,cnn_edges,1,1,1,1,1.0
+Which task predicts bounding boxes and labels?,object_detection,1,1,1,1,1.0
+Which detector is known for single-pass real-time detection?,yolo,1,1,1,1,1.0
+Which detector uses region proposals?,faster_rcnn,1,1,1,1,1.0
+What does RAG retrieve before answering?,rag,16,0,0,0,0.0625
+What retrieval method compares embedding vectors?,dense_retrieval,1,1,1,1,1.0
+Which sparse retriever uses term frequency and IDF?,bm25,1,1,1,1,1.0
+What step reorders initially retrieved documents?,reranking,1,1,1,1,1.0
+What is a fluent but unsupported LLM answer called?,hallucination,1,1,1,1,1.0
+What studies the effect of instructions and examples on LLM behavior?,prompt_engineering,1,1,1,1,1.0
+What kind of agent calls calculators or search tools?,agent_tool_use,1,1,1,1,1.0
+Which graph measure finds important nodes?,graph_centrality,1,1,1,1,1.0
+What graph task finds densely connected groups?,community_detection,1,1,1,1,1.0
+Which graph neural network aggregates neighbors?,gcn,1,1,1,1,1.0
+What task predicts labels for graph nodes?,node_classification,1,1,1,1,1.0
+What checks whether probabilities match correctness frequency?,calibration,1,1,1,1,1.0
+What evaluation repeats training across several splits?,cross_validation,1,1,1,1,1.0
+What stops training when validation stops improving?,early_stopping,1,1,1,1,1.0
+What table shows classifier confusions between classes?,confusion_matrix,1,1,1,1,1.0
+Which F1 treats each class equally?,macro_f1,1,1,1,1,1.0

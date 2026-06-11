@@ -1,29 +1,25 @@
-# Report: Tiny RAG Pipeline for Scientific Abstracts
+# One-Page Report: Tiny RAG Retrieval Evaluation
 
 ## Motivation
 
-We built a small RAG pipeline to understand retrieval before adding generation.
+RAG systems need good retrieval. If the retriever misses the correct source, the answer can become unsupported. We therefore evaluated retrieval quality with hit@k metrics.
 
 ## Dataset
 
-The corpus contains five short AI abstract snippets and three test questions.
+The corpus has 30 short AI research abstracts and 30 labeled queries. Each query has one gold document ID.
 
 ## Method
 
-We used TF-IDF vectors and cosine similarity to retrieve the most relevant abstract for each query.
-
-## Hyperparameters
-
-The vectorizer used English stop-word removal. Retrieval used top-1 cosine similarity.
+We used TF-IDF with unigrams and bigrams, then ranked documents by cosine similarity. For each query, we measured the rank of the gold document.
 
 ## Results
 
-The system retrieved the expected topics for all three queries. Similarity scores were 0.5000, 0.6030, and 0.4143.
+The system achieved Hit@1 of 0.9333, Hit@3 of 0.9667, Hit@5 of 0.9667, mean reciprocal rank of 0.9521, and mean gold rank of 1.5333.
 
 ## Interpretation
 
-Retrieval worked correctly in this small setting, but the modest scores show that larger corpora and better embeddings would be needed for a serious RAG system.
+The retriever is strong on this controlled corpus, but the task is still easier than real scientific retrieval. Some topics have clear keywords, so sparse lexical retrieval works well. A harder benchmark should include more documents with overlapping vocabulary.
 
 ## Conclusion
 
-The project demonstrates the core RAG idea clearly. The next step is top-k retrieval and faithfulness checking.
+The project now has real retrieval evaluation instead of only example outputs. A useful next step is comparing TF-IDF against dense embeddings and reranking.

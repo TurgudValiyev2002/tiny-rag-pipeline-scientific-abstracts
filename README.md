@@ -2,20 +2,21 @@
 
 ![Project overview](assets/readme_project_overview.png)
 
-Figure: retrieval-augmented answering pipeline used in this project.
-
+Figure: a small retrieval benchmark with 30 abstracts, 30 labeled queries, TF-IDF ranking, and hit@k evaluation.
 
 ## Motivation
 
-Retrieval augmented generation works only if retrieval finds useful evidence. This project builds a small RAG-style pipeline to make the retrieval step visible and measurable.
+Retrieval augmented generation depends on retrieval quality. If the retriever gives the wrong document, the generated answer may be unsupported even if the language model sounds confident. For that reason, a RAG project should report retrieval metrics, not only example outputs.
 
 ## Project Goal
 
-We built a tiny scientific-abstract search system. Given a question, the system retrieves the most relevant abstract and returns an evidence-based answer.
+We built a small RAG-style retrieval pipeline and evaluated whether the correct document appears in the top retrieved results.
 
 ## Dataset
 
-The corpus contains five short AI-related abstract snippets about federated learning, vision transformers, RAG, Edge AI, and graph neural networks.
+The corpus contains 30 short AI research abstracts covering federated learning, edge AI, quantization, pruning, computer vision, RAG, tool agents, graph learning, and evaluation methods.
+
+The query set contains 30 labeled questions. Each query has one gold document ID.
 
 ## Tools
 
@@ -23,31 +24,48 @@ Python, pandas, scikit-learn, and matplotlib.
 
 ## Method
 
-We converted abstracts and queries into TF-IDF vectors, computed cosine similarity, selected the top matching abstract, and used that abstract as the simple answer.
+We used TF-IDF with unigram and bigram features. For each query, we ranked all documents by cosine similarity and evaluated whether the gold document appeared in the top results.
 
-## Hyperparameters
+## Metrics
 
-- Vectorizer: `TfidfVectorizer(stop_words="english")`
-- Retrieval: top-1 cosine similarity
-- Number of queries: 3
+- Hit@1: gold document is ranked first
+- Hit@3: gold document appears in the top 3
+- Hit@5: gold document appears in the top 5
+- Mean reciprocal rank: average reciprocal rank of the gold document
 
 ## Results
 
-| Query | Retrieved Topic | Score |
-|---|---|---:|
-| How does federated learning protect data? | federated learning | 0.5000 |
-| What does RAG do before generation? | retrieval augmented generation | 0.6030 |
-| Why run AI on edge devices? | edge ai | 0.4143 |
+| Metric | Value |
+|---|---:|
+| Documents | 30 |
+| Queries | 30 |
+| Hit@1 | 0.9333 |
+| Hit@3 | 0.9667 |
+| Hit@5 | 0.9667 |
+| Mean reciprocal rank | 0.9521 |
+| Mean gold rank | 1.5333 |
 
-Result files include the corpus, retrieval table, and retrieval-score figure.
+![Retrieval metrics](results/retrieval_metrics.png)
+
+![Gold rank distribution](results/gold_rank_distribution.png)
+
+Result files:
+
+- `results/abstract_corpus.csv`
+- `results/query_set.csv`
+- `results/rag_retrieval_results.csv`
+- `results/retrieval_metrics_by_query.csv`
+- `results/retrieval_summary.csv`
 
 ## Interpretation
 
-The retriever selected the expected topic for all three queries. The scores are not very high because the corpus is tiny and the wording is short. This is normal for a minimal TF-IDF setup.
+The retriever works well on this controlled scientific mini-corpus. Hit@1 is high, meaning most queries retrieve the correct document first. Hit@3 improves slightly, showing that top-k retrieval helps when the first document is not perfect.
+
+The result is not a claim that TF-IDF is enough for real RAG. The dataset is still small and carefully written. A larger corpus with overlapping topics would be harder and would likely require dense retrieval or reranking.
 
 ## Conclusion
 
-This project shows the basic RAG workflow: build a corpus, retrieve evidence, and answer from the retrieved text. A stronger version should add top-k retrieval, larger documents, and faithfulness evaluation.
+The project now evaluates retrieval quality directly. The next step is to add more documents with similar wording and compare TF-IDF with embedding retrieval and reranking.
 
 ## How To Run
 
